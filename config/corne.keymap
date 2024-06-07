@@ -9,10 +9,7 @@
 #include <dt-bindings/zmk/outputs.h>
 
 #include "node_free.h"
-#include "layers.h"
-#include "keyboards/linux.h"
-#include "keyboards/windows.h"
-#include "keyboards/macos.h"
+#include "optimot.h"
 
 #define ___ &trans
 
