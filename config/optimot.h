@@ -219,5 +219,5 @@ MACRO_ALT_CODE(emdash,  1, 5, 1) // —
 MACRO_ALT_CODE(ddd,     1, 3, 3) // …
 MACRO_ALT_CODE(iqm,     1, 9, 1) // ¿
 MACRO_ALT_CODE(iem,     1, 6, 1) // ¡
-MACRO_ALT_CODE(1up,     1, 8, 5) // ¹
-MACRO_ALT_CODE(3up,     1, 7, 9) // ³
+MACRO_ALT_CODE(win_1up,     1, 8, 5) // ¹
+MACRO_ALT_CODE(win_3up,     1, 7, 9) // ³
