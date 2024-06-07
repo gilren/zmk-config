@@ -189,10 +189,10 @@
 
 
 /* Actions */
-#define CUT   LC(FR_X)
-#define COPY  LC(FR_C)
-#define PASTE LC(FR_V)
-#define REDO  LC(FR_Y)
+#define WIN_CUT   LC(FR_X)
+#define WIN_COPY  LC(FR_C)
+#define WIN_PASTE LC(FR_V)
+#define WIN_REDO  LC(FR_Y)
 
 
 /* Alternate Alphas & Symbols */
