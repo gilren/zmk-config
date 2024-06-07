@@ -1,0 +1,144 @@
+# parsed and then tweaked from https://github.com/LOWPROKB/zmk-config-zen-2/blob/main/config/corneish_zen.keymap
+layout:
+  qmk_keyboard: corne_rotated
+  qmk_layout: LAYOUT_split_3x6_3
+layers:
+  DEFAULT:
+    - [{t: "#", s: '%'}, "À", "J", "O", "É", "B", "F", "D", "L", {t: "'", s: '?'}, "Q", "X"]
+    - [{t: "@", s: '_'}, {t: A, h: LGui}, {t: I, h: LAlt}, {t: E, h: LCtrl}, {t: U, h: LShft}, {t: ",", s: ';'}, "P", {t: T, h: RShft}, {t: S, h: RCtrl}, {t: R, h: RAlt}, {t: N, h: RGui}, {t: "^", s: '!'}]
+    - ["Ç", "K", "Y", "È", {t: ".", s: ':'}, "W", "G", "C", "M", "H", "V", "Z"]
+    - [{t: Esc, h: Function}, {t: Space, h: Nav}, {t: Tab, h: Mouse}, {t: Enter, h: Sym}, {t: Bckspc, h: Num}, {t: Delete, h: Fun}]
+  NUMBER:
+    - ['', '', {t: '7'}, {t: '8'}, {t: '9'}, {t: '³'}, '', '', '', '', '', '']
+    - ['', {t: '0', h: 'LGui'}, {t: '4', h: 'LAlt'}, {t: '5', h: 'LCtrl'}, {t: '6', h: 'LShft'}, {t: '²'}, '', '', '', '', '', '']
+    - ['', '', {t: '1'}, {t: '2'}, {t: '3'}, {t: '¹'}, '', '', '', '', '', '']
+    - [{t: Esc, h: Function}, {t: Space, h: Nav}, {t: Tab, h: Mouse}, {t: Enter, h: Sym}, {type: held}, {t: Delete, h: Fun}]
+  NAVIGATION:
+    - ['', '', '', '', '', '', {t: 'Redo'}, {t: 'Paste'}, {t: 'Copy'}, {t: 'Cut'}, {t: 'Undo'}, {t: 'Save'}]
+    - ['', {t: 'Lgui'}, {t: 'LAlt'}, {t: 'LCtrl'}, {t: 'LShft'}, '', {t: 'Caps'}, {t: 'Left'}, {t: 'Down'}, {t: 'Up'}, {t: 'Right'}, {t: 'Reload'}]
+    - ['', '', '', '', '', '', {t: 'Inset'}, {t: 'Home'}, {t: 'Page Down'}, {t: 'Page Up'}, {t: 'End'}, {t: 'Prinscreen'}]
+    - [{t: Esc, h: Media}, {type: held}, {t: Tab, h: Mouse}, {t: Enter, h: Sym}, {t: Bckspc, h: Num}, {t: Delete, h: Fun}]
+  FUNCTION:
+    - ['', {t: 'F12'}, {t: 'F7'}, {t: 'F8'}, {t: 'F9'}, '', '', '', '', '', '', '']
+    - ['', {t: 'F11', h: 'LGui'}, {t: 'F4', h: 'LAlt'}, {t: 'F5', h: 'LCtrl'}, {t: 'F6', h: 'LShft'}, '', '', {t: 'Prev'}, {t: 'Volume Down'}, {t: 'Volume Up'}, {t: 'Next'}, '']
+    - ['', {t: 'F10'}, {t: 'F1'}, {t: 'F2'}, {t: 'F3'}, '', '', '', '', '', '', '']
+    - [{type: held}, {t: Space, h: Nav}, {t: Tab, h: Mouse}, {t: 'Stop'}, {t: 'Pause'}, {t: 'Mute'}]
+  GAMING:
+    - [{t: 'Tab'}, {t: 'q'}, {t: 'w'}, {t: 'e'}, {t: 'r'}, {t: 't'}, '', {t: '7'}, {t: '8'}, {t: '9'},  '', {t: 'DEFAULT'}]
+    - [{t: 'LShift'}, {t: 'a'}, {t: 's'}, {t: 'd'}, {t: 'f'}, {t: 'g'}, '', {t: '4'}, {t: '5'}, {t: '6'}, '', '']
+    - [{t: 'LCtrl'}, {t: 'z'}, {t: 'x'}, {t: 'c'}, {t: 'v'}, {t: 'b'}, '', {t: '1'}, {t: '2'}, {t: '3'}, '', {t: 'RGui'}]
+    - [{t: 'Esc'}, {t: 'Space'}, {t: 'LAlt'}, {t: 'Enter'}, {t: 'Bckspc'}, {t: 'Delete'}]
+combos:
+  - p: [20, 32]
+    k: {t: "/"}
+    l: [DEFAULT]
+  - p: [31, 32]
+    k: {t: "["}
+    l: [DEFAULT]
+  - p: [32, 33]
+    k: {t: "]"}
+    l: [DEFAULT]
+
+  - p: [16, 19]
+    k: {t: "Caps Word"}
+    l: [DEFAULT]
+
+  - p: [2, 3]
+    k: {t: "<"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+  - p: [3, 4]
+    k: {t: ">"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+
+  - p: [14, 15]
+    k: {t: "Undo"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+  - p: [15, 16]
+    k: {t: "Redo"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+  - p: [16, 17]
+    k: {t: "ù"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+  - p: [14, 15, 16]
+    k: {t: "Nav Word"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+
+  - p: [26, 28]
+    k: {t: "Cut"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+  - p: [26, 27]
+    k: {t: "Copy"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+  - p: [27, 28]
+    k: {t: "Paste"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+  - p: [26, 27, 28]
+    k: {t: "Num word"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+
+  - p: [7, 8]
+    k: {t: "{"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+  - p: [8, 9]
+    k: {t: "}"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+
+  - p: [19, 20]
+    k: {t: "("}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+  - p: [20, 21]
+    k: {t: ")"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+
+  - p: [31, 32]
+    k: {t: "["}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+  - p: [32, 33]
+    k: {t: "]"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+  - p: [31, 32, 33]
+    k: {t: "DEFAULT"}
+    l: [DEFAULT, NAVIGATION, NUMBER, GAMING]
+
+  - p: [4, 16]
+    k: {t: "$", s: "€"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+  - p: [5, 17]
+    k: {t: "\""}
+    l: [DEFAULT]
+
+  - p: [14, 26]
+    k: {t: "`"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+  - p: [15, 27]
+    k: {t: "\\"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+  - p: [16, 28]
+    k: {t: "="}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+  - p: [17, 29]
+    k: {t: "~"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+
+  - p: [6, 18]
+    k: {t: "¨"}
+    l: [DEFAULT]
+  - p: [7, 19]
+    k: {t: "+"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+  - p: [8, 20]
+    k: {t: "*"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+  - p: [9, 21]
+    k: {t: "&"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+
+  - p: [30, 31]
+    k: {t: "-"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+  - p: [20, 32]
+    k: {t: "/"}
+    l: [DEFAULT, NAVIGATION, NUMBER]
+  - p: [21, 33]
+    k: {t: "|"}
+    l: [DEFAULT, NAVIGATION, NUMBER]

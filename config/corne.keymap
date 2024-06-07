@@ -1,131 +1,207 @@
-/*
- * Copyright (c) 2022 The ZMK Contributors
- * SPDX-License-Identifier: MIT
- */
-
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
+#include "keypos_42keys.h"
 
-#include "node_free.h"
+#include "helper.h"
 #include "optimot.h"
+
+#define DEF 0
+#define NUM 1
+#define NAV 2
+#define FUN 3
+#define GAM 4
+
+#include "combos.dtsi"
 
 #define ___ &trans
 
-#define DEF 0
-#define SYM 1
-#define NUM 2
-#define NAV 3
-#define GAM 4
+/* Global settings */
 
+#define QUICK_TAP_MS 175
 
-// Home row mods macro
-#define HRML(k1,k2,k3,k4) &ht LGUI k1 &ht LALT k2 &ht LCTRL k3 &ht LSHFT k4
-#define HRMR(k1,k2,k3,k4) &ht RSHFT k1 &ht RCTRL k2 &ht RALT k3 &ht RGUI k4
+&sk {  // sticky-key config
+    release-after-ms = <900>;  // release after 0.6s
+    quick-release;             // no double capitalization when rolling keys
+};
 
+&sl {  // sticky-layer config
+    ignore-modifiers;          // allow chording sticky mods & layers
+};
 
-// #undef COMBO_TERM
-// #define COMBO_TERM 40  // timeout of 40ms (default is 30ms if omitted)
-// COMBO(combo_agrav,  &agrv, LB3 LB4, 0)  
-// COMBO(combo_q,   &kp FR_Q, LB7 LB8, 0)  
-// COMBO(combo_underscore,  &kp UNDERSCORE, LB25 LB26, 0)  
-// COMBO(combo_minus,  &kp MINUS,  LB27 LB28, 0)  
-// COMBO(combo_caret,  &kp CARET,  LB31 LB32, 0)  
-// COMBO(combo_cced,  &cced,  LB32 LB33, 0)  
+/*
+  layer-tap config
+  Quickly tap-tap-holding the lt button will repeat the tap behavior
+  For example enter-enter-hold, will output multiple enter while you
+  keep holding the key.
+  But holding enter without double tapping, will activate the layer.
+*/ 
+&lt { 
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <QUICK_TAP_MS>;
+};
+
+/* Homerow mods */
+
+#define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4  // left hand
+#define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4  // right hand
+#define THUMBS LH2 LH1 LH0 RH0 RH1 RH2                                      // thumbs
+
+#define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS) \
+    ZMK_HOLD_TAP(NAME, \
+        flavor = "balanced"; \
+        tapping-term-ms = <280>; \
+        quick-tap-ms = <QUICK_TAP_MS>; \
+        require-prior-idle-ms = <150>; \
+        bindings = <HOLD>, <TAP>; \
+        hold-trigger-key-positions = <TRIGGER_POS>; \
+        hold-trigger-on-release; \
+    )
+MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS)  // left-hand HRMs
+MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)  // right-hand HRMs
+
+// MAKE_HRM(hml_repeat, &kp, &key_repeat, KEYS_R THUMBS)  // used for HRM-combo
+// MAKE_HRM(hmr_lpar_lt, &kp, &lpar_lt, KEYS_L THUMBS)    // "    "   "   "
+// MAKE_HRM(hmr_rpar_gt, &kp, &rpar_gt, KEYS_L THUMBS)    // "    "   "   "
+
+/* Smart layers */
+
+&caps_word {  // mods deactivate caps-word, requires PR #1451
+    continue-list = <UNDERSCORE MINUS LCTRL LALT LGUI LSHFT RCTRL RALT RGUI RSHFT BACKSPACE
+    BE_HASH BE_AT BE_AGRV BE_EACU BE_EGRV BE_UGRV BE_CARET BE_COMMA BE_DOT BE_SQT BE_CCED>;
+    /delete-property/ ignore-numbers;
+    /delete-property/ ignore-modifiers;
+};
+
+&num_word {  // num-word, requires PR #1451
+    layers = <NUM>;
+    continue-list = <BSPC DEL BE_DOT BE_COMMA BE_PLUS BE_MINUS BE_ASTR BE_SLSH BE_EQUAL>;
+    ignore-modifiers;
+    ignore-numbers;
+};
+
+ZMK_CAPS_WORD(nav_word,
+    layers = <NAV>;
+    continue-list = <LEFT DOWN UP RIGHT PG_UP PG_DN WIN_UNDO WIN_CUT WIN_COPY WIN_PASTE>;
+    ignore-modifiers;
+)
+
+/* Morph shift */
+
+#define MORPH_UP(NAME, BINDING1, BINDING2) \
+    ZMK_MOD_MORPH(NAME, \
+        mods = <(MOD_LSFT|MOD_RSFT)>; \
+        bindings = <BINDING1>, <BINDING2>; \
+    )
+
+// tap: # | shift + tap: %
+MORPH_UP(hash_prcnt, &kp BE_HASH,  &kp BE_PRCNT)
+// tap: @ | shift + tap: _
+MORPH_UP(at_under,  &kp BE_AT,    &kp BE_UNDS)
+// tap: ^ | shift + tap: !
+MORPH_UP(caret_excl, &kp BE_CARET, &kp BE_EXCL)
+// tap: , | shift + tap: ;
+MORPH_UP(comma_semi, &kp BE_COMMA, &kp BE_SEMI)
+// tap: . | shift + tap: :
+MORPH_UP(dot_colon, &kp BE_DOT,   &kp BE_COLON)
+// tap: ' | shift + tap: ?
+MORPH_UP(sqt_qmark, &kp BE_SQT,   &kp BE_QMARK)
+// tap: $ | shift + tap: €
+MORPH_UP(dlr_eur,   &kp BE_DLR,   &kp BE_EURO)
+
+MORPH_UP(win_agrv,  &kp BE_AGRV,  &win_agrv_up)
+MORPH_UP(win_eacu,  &kp BE_EACU,  &win_eacu_up)
+MORPH_UP(win_egrv,  &kp BE_EGRV,  &win_egrv_up)
+MORPH_UP(win_cced,  &kp BE_CCED,  &win_cced_up)
+MORPH_UP(win_ugrv,  &kp BE_UGRV,  &win_ugrv_up)
+
+ZMK_TRI_STATE(swapper,
+    bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+    ignored-key-positions = <LT2>;
+)
+
 
 /*
           ╭─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
-          │  #  │  À  │  J  │  O  │  É  │  B  │   │  F  │  D  │  L  │ ' ? │  X │  $   │
-          │  @  │  A  │  I  │  E  │  U  │ , ; │   │  P  │  T  │  S  │  R  │  N  │ ^ ! │
-          │ GUI │  K  │  Y  │  È  │ . : │  W  │   │  G  │  C  │  M  │  H  │  V  │  Z  │
+          │ # % │  À  │  J  │  O  │  É  │  B  │   │  F  │  D  │  L  │ ' ? │  Q  │  X  │
+          │ @ _ │  A  │  I  │  E  │  U  │ , ; │   │  P  │  T  │  S  │  R  │  N  │ ^ ! │
+          │  Ç  │  K  │  Y  │  È  │ . : │  W  │   │  G  │  C  │  M  │  H  │  V  │  Z  │
           ╰─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────╯
-                            │ Esc │ SPC │TAB  │   │Enter│ BSPC│ DEL │
+                            │ ESC │ SPC │ TAB │   │Enter│ BSPC│ DEL │
                             ╰─────┴─────┴─────╯   ╰─────┴─────┴─────╯
 */
 
-MACRO(q_u, bindings = <&kp FR_Q &kp FR_U>;)
-
-MORPH_UP(agrv, &kp FR_AGRV, &agrv_up)
-MORPH_UP(eacu, &kp FR_EACU, &eacu_up)
-MORPH_UP(egrv, &kp FR_EGRV, &egrv_up)
-
-MORPH_UP(caret_excl, &kp FR_CARET, &kp FR_EXCL)
-MORPH_UP(comma_semi, &kp FR_COMMA, &kp FR_SEMI)
-MORPH_UP(dot_colon,  &kp FR_DOT,   &kp FR_COLON)
-MORPH_UP(sqt_qmark,  &kp FR_SQT,   &kp FR_QMARK)
-
-TAPDANCE(td_ctrl_esc, <&kp LCTRL>, <&kp ESC>)
-
-LAYER(DEFAULT,
-  &kp TAB       &agrv     &kp FR_J  &kp FR_O   &eacu       &kp FR_B         &kp FR_F     &kp FR_D  &kp FR_L  &sqt_qmark  &kp FR_X  &kp DOLLAR
-  &kp AT_SIGN   HRML(FR_A,FR_I,     FR_E,      FR_U)       &comma_semi      HRMR(FR_P,   FR_T,     FR_S,     FR_R)       &kp FR_N  &caret_excl
-  &kp LGUI      &kp FR_K  &kp FR_Y  &egrv      &dot_colon  &kp FR_W         &kp FR_G     &kp FR_C  &kp FR_M  &kp FR_H    &kp FR_V  &kp FR_Z
-                                    &kp ESC    &lt NAV SPACE   &mt TAB      &lt ENTER    &lt NUM BSPC  &kp DEL
+ZMK_LAYER(DEFAULT,
+  &hash_prcnt   &win_agrv       &kp BE_J        &kp BE_O          &win_eacu        &kp BE_B     &kp BE_F      &kp BE_D        &kp BE_L          &sqt_qmark     &kp BE_Q        &kp BE_X
+  &at_under     &hml LGUI BE_A  &hml LALT BE_I  &hml LCTRL BE_E   &hml LSHFT BE_U  &comma_semi  &kp BE_P      &hmr RSHFT BE_T &hmr RCTRL BE_S   &hmr RALT BE_R &hmr RGUI BE_N  &caret_excl
+  &win_cced     &kp BE_K        &kp BE_Y        &win_egrv         &dot_colon       &kp BE_W     &kp BE_G      &kp BE_C        &kp BE_M          &kp BE_H       &kp BE_V        &kp BE_Z
+                                &lt FUN ESC     &lt NAV SPACE     &kp TAB          &kp ENTER    &lt NUM BSPC  &kp DEL
 )
 
 /*
           ┌─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
-          │     │  <  │  >  │ & œ │  |  │  `  │   │  ’  │  {  │  }  │  [  │  ]  │  —  │
-          │     │  @  │  _  │  "  │  -  │  +  │   │  *  │  /  │  =  │  (  │  )  │  ¨  │
-          │     │  «  │  »  │  ~  │  \  │  %  │   │  #  │  Ç  │  €  │  $  │  ù  │  …  │
-          └─────┴─────┴─────┴─────┴─────┴─────┘   └─────┴─────┴─────┴─────┴─────┴─────╯
+          │     │     │  7  │  8  │  9  │  ³  │   │     │     │     │     │     │     │
+          │     │  0  │  4  │  5  │  6  │  ²  │   │     │     │     │     │     │     │
+          │     │     │  1  │  2  │  3  │  ¹  │   │     │     │     │     │     │     │
+          ╰─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────╯
+                            │     │     │     │   │     │  X  │     │
+                            ╰─────┴─────┴─────╯   ╰─────┴─────┴─────╯
 */
 
-MORPH_UP(cced, &kp FR_CCED, &cced_up)
-MORPH(ampr_oe, &kp FR_AMPR, MOD_LCTL, &oe_lo)
-
-LAYER(SYMBOLS,
-  ___  &kp FR_LT   &kp FR_GT    &ampr_oe     &kp FR_PIPE   &grave          &apos        &kp FR_LCBR  &kp FR_RCBR   &kp FR_LBRC  &kp FR_RBRC  &emdash
-  ___  &kp FR_AT   &kp FR_UNDS  &kp FR_DQT   &kp FR_MINUS  &kp FR_PLUS     &kp FR_ASTR  &kp FR_SLSH  &kp FR_EQUAL  &kp FR_LPRN  &kp FR_RPRN  &kp FR_DIAE
-  ___  &qml        &qmr         &tild        &kp FR_BSLS   &kp FR_PRCNT    &kp FR_HASH  &cced        &kp FR_EURO   &kp FR_DLR   &kp FR_UGRV  &ddd
-  ___  ___  ___  ___  ___  ___
+ZMK_LAYER(NUMBERS,
+  ___   ___              &kp KP_N7          &kp KP_N8          &kp KP_N9         &win_3up      ___    ___    ___    ___   ___    ___
+  ___   &hml LGUI KP_N0  &hml LALT KP_N4    &hml LCTRL KP_N5   &hml LSHFT KP_N6  &kp BE_2UP    ___    ___    ___    ___   ___    ___
+  ___   ___              &kp KP_N1          &kp KP_N2          &kp KP_N3         &win_1up      ___    ___    ___    ___   ___    ___
+                         ___                ___                ___               ___    ___    ___
 )
 
 /*
           ┌─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
-          │     │ F1  │ F2  │ F3  │ F4  │ F5  │   │ F6  │ F7  │ F8  │ F9  │ F10 │ F11 │
-          │     │  1  │  2  │  3  │  4  │  5  │   │  6  │  7  │  8  │  9  │  0  │ F12 │
-          │     │  ¹  │  ²  │  ³  │     │     │   │     │     │     │     │  °  │     │
-          └─────┴─────┴─────┴─────┴─────┴─────┘   └─────┴─────┴─────┴─────┴─────┴─────╯
+          │     │     │     │ SWAP│     |     │   │REDO │PASTE│COPY │ CUT │UNDO │SAVE │
+          │     │ GUI │ ALT │CTRL │SHIFT│     │   │CAPS │  ←  │  ↓  │  ↑  │  →  │RELOAD│
+          │     │     │     │     │     │     │   │ INS │HOME │ PDN │ PUP │ END │PSCRN│
+          ╰─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────╯
+                            │     │  X  │     │   │Enter│ BSPC│ DEL │
+                            ╰─────┴─────┴─────╯   ╰─────┴─────┴─────╯
 */
 
-LAYER(NUMBERS,
-  ___  &kp F1      &kp F2      &kp F3      &kp F4     &kp F5       &kp F6     &kp F7     &kp F8     &kp F9     &kp F10     &kp F11
-  ___  &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_N4  &kp KP_N5    &kp KP_N6  &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_N0   &kp F12
-  ___  &win_1up        &kp FR_2UP  &win_3up        &none      &none        &none      &none      &none      &none      &kp FR_DEG  &none
-  ___  ___           ___       ___         ___        ___
-)
-
-/*
-          ┌─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
-          │     │     │     │     │RELO │ ⇧⇧  │   │PREV │PLAY │NEXT │MUTE │VDWN │ VUP │
-          │     │UNDO │ CUT │COPY │PASTE│REDO │   │CAPS │  ←  │  ↓  │  ↑  │  →  │     │
-          │     │     │     │     │SAVE │     │   │ INS │HOME │ PDN │ PUP │ END │PSCRN│
-          └─────┴─────┴─────┴─────┴─────┴─────┘   └─────┴─────┼─────┼─────┴─────┴─────╯
-                                                        │ DEL │
-                                                        └─────╯
-*/
-
-LAYER(NAVIG,
-  ___  &none         &none        &none         &kp LC(LS(FR_R))  &double_shift   &kp C_PREV  &kp C_PP  &kp C_NEXT  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP
-  ___  &kp LC(FR_Z)  &kp WIN_CUT  &kp WIN_COPY  &kp WIN_PASTE     &kp WIN_REDO    &kp CAPS    &kp LEFT  &kp DOWN    &kp UP      &kp RIGHT     &none
-  ___  &none         &none        &none         &kp LC(FR_S)      &none           &kp INS     &kp HOME  &kp PG_DN   &kp PG_UP   &kp END       &kp PSCRN
-  ___                ___          ___           ___               ___             &kp DEL
+ZMK_LAYER(NAVIG,
+  ___  ___           ___          &swapper      ___         ___      &kp WIN_REDO   &kp WIN_PASTE  &kp WIN_COPY   &kp WIN_CUT   &kp WIN_UNDO  &kp WIN_SAVE
+  ___  &kp LGUI     &kp LALT      &kp LCTRL     &kp LSHFT   ___      &kp CAPS       &kp LEFT       &kp DOWN       &kp UP        &kp RIGHT     &kp WIN_RELOAD
+  ___  ___           ___          ___           ___         ___      &kp INS        &kp HOME       &kp PG_DN      &kp PG_UP     &kp END       &kp PSCRN
+                                  ___           ___         ___      ___            ___            ___
 )
 
 /*
           ╭─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
-          │ TAB │  T  │  A  │ Z ↑ │  E  │  R  │   │  7  │  8  │  9  │     │     │ def │
-          │ ESC │SHFT │ Q ← │ S ↓ │ D → │  F  │   │  4  │  5  │  6  │     │     │     │
-          │ CTRL│  B  │  W  │  X  │  C  │  V  │   │  1  │  2  │  3  │     │     │     │
+          │     │ F12 │ F12 │ F12 │ F12 │     │   │     │     │     │     │     │     │
+          │     │ F11 │ F4  │ F5  │ F6  │     │   │     │ PREV│VDWN │ VUP │ NEXT│     │
+          │     │ F10 │ F1  │ F2  │ F3  │     │   │     │     │     │     │     │     │
           ╰─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────╯
-                            │ ALT │  G  │ SPC │   │ RET │ GUI │  0  │
+                            │  X  │     │     │   │ STOP│PAUSE│ MUTE│
                             ╰─────┴─────┴─────╯   ╰─────┴─────┴─────╯
 */
-LAYER(GAMING,
-  &kp TAB    &kp FR_T   &kp FR_A  &kp FR_Z  &kp FR_E  &kp FR_R    &kp KP_N7  &kp KP_N8  &kp KP_N9  &none  &none  &to DEF
-  &kp ESC    &kp LSHFT  &kp FR_Q  &kp FR_S  &kp FR_D  &kp FR_F    &kp KP_N4  &kp KP_N5  &kp KP_N6  &none  &none  &none
-  &kp LCTRL  &kp FR_B   &kp FR_W  &kp FR_X  &kp FR_C  &kp FR_V    &kp KP_N1  &kp KP_N2  &kp KP_N3  &none  &none  &none
-                                  &kp LALT  &kp FR_G  &kp SPC     &kp RET    &kp LGUI   &kp KP_N0
+ZMK_LAYER(FUNCTION,
+   ___   &kp F12       &kp F7        &kp F8        &kp F9          ___        ___         ___           ___           ___           ___         ___
+   ___   &hml LGUI F11 &hml LALT F4  &hml LCTRL F5 &hml LSHFT F6   ___        ___         &kp C_PREV    &kp C_VOL_DN  &kp C_VOL_UP  &kp C_NEXT  ___
+   ___   &kp F10       &kp F1        &kp F2        &kp F3          ___        ___         ___           ___           ___           ___         ___
+                                     ___           ___             ___        &kp C_STOP  &kp C_PP      &kp C_MUTE
+)
+
+/*
+          ╭─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
+          │ TAB │  Q  │  W  │  E  │  R  │  T  │   │     │  7  │  8  │  9  │     │ DEF │
+          │ SHFT│  A  │  S  │  D  │  F  │  G  │   │     │  4  │  5  │  6  │    │     │
+          │ CTRL│  Z  │  X  │  C  │  V  │  B  │   │     │  1  │  2  │  3  │     │ GUI │
+          ╰─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────╯
+                            │ Esc │ SPC │ ALT │   │Enter│ BSPC│ DEL │
+                            ╰─────┴─────┴─────╯   ╰─────┴─────┴─────╯
+*/
+ZMK_LAYER(GAMING,
+  &kp TAB    &kp BE_Q   &kp BE_W  &kp BE_E  &kp BE_R  &kp BE_T    &none &kp KP_N7  &kp KP_N8  &kp KP_N9  &none  &to DEF
+  &kp LSHFT  &kp BE_A   &kp BE_S  &kp BE_D  &kp BE_F  &kp BE_G    &none &kp KP_N4  &kp KP_N5  &kp KP_N6  &none  &none
+  &kp LCTRL  &kp BE_Z   &kp BE_X  &kp BE_C  &kp BE_V  &kp BE_B    &none &kp KP_N1  &kp KP_N2  &kp KP_N3  &none  &kp RGUI
+                                  &kp ESC   &kp SPACE &kp LALT    &kp ENTER  &kp BSPC   &kp DEL
 )

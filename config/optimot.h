@@ -1,223 +1,172 @@
 #pragma once
 
-#include "node_free.h"
-
 /*
 ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐
-│ ² │ & │ é │ " │ ' │ ( │ - │ è │ _ │ ç │ à │ ) │ = │       │
+│ ² │ & │ é │ " │ ' │ ( │ § │ è │ ! │ ç │ à │ ) │ - │       │
 ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤
-│     │ A │ Z │ E │ R │ T │ Y │ U │ I │ O │ P │^☠️│ $ │     │
+│     │ A │ Z │ E │ R │ T │ Y │ U │ I │ O │ P │^☠️ │ $ │     │
 ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┐    │
-│      │ Q │ S │ D │ F │ G │ H │ J │ K │ L │ M │ ù │ * │    │
+│      │ Q │ S │ D │ F │ G │ H │ J │ K │ L │ M │ ù │ µ │    │
 ├────┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴───┴────┤
-│    │ < │ W │ X │ C │ V │ B │ N │ , │ ; │ : │ ! │          │
+│    │ < │ W │ X │ C │ V │ B │ N │ , │ ; │ : │ = │          │
 ├────┼───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤
 │    │    │    │                        │    │    │    │    │
 └────┴────┴────┴────────────────────────┴────┴────┴────┴────┘
 */
 // Row 1
-#define FR_2UP   GRAVE  // ²
-#define FR_AMPR  N1     // &
-#define FR_EACU  N2     // é
-#define FR_DQT   N3     // "
-#define FR_SQT   N4     // '
-#define FR_LPRN  N5     // (
-#define FR_MINUS N6     // -
-#define FR_EGRV  N7     // è
-#define FR_UNDS  N8     // _
-#define FR_CCED  N9     // ç
-#define FR_AGRV  N0     // à
-#define FR_RPRN  MINUS  // )
-#define FR_EQUAL EQUAL  // =
+#define BE_2UP   GRAVE  // ²
+#define BE_AMPR  N1     // &
+#define BE_EACU  N2     // é
+#define BE_DQT   N3     // "
+#define BE_SQT   N4     // '
+#define BE_LPRN  N5     // (
+#define BE_SECT  N6     // §
+#define BE_EGRV  N7     // è
+#define BE_EXCL  N8     // !
+#define BE_CCED  N9     // ç
+#define BE_AGRV  N0     // à
+#define BE_RPRN  MINUS  // )
+#define BE_MINUS EQUAL  // =
 // Row 2
-#define FR_A     Q      // A
-#define FR_Z     W      // Z
-#define FR_E     E      // E
-#define FR_R     R      // R
-#define FR_T     T      // T
-#define FR_Y     Y      // Y
-#define FR_U     U      // U
-#define FR_I     I      // I
-#define FR_O     O      // O
-#define FR_P     P      // P
-#define FR_CARET LBKT   // ^ (dead)
-#define FR_DLR   RBKT   // $
+#define BE_A     Q      // A
+#define BE_Z     W      // Z
+#define BE_E     E      // E
+#define BE_R     R      // R
+#define BE_T     T      // T
+#define BE_Y     Y      // Y
+#define BE_U     U      // U
+#define BE_I     I      // I
+#define BE_O     O      // O
+#define BE_P     P      // P
+#define BE_CARET LBKT   // ^ (dead)
+#define BE_DLR   RBKT   // $
 // Row 3
-#define FR_Q     A      // Q
-#define FR_S     S      // S
-#define FR_D     D      // D
-#define FR_F     F      // F
-#define FR_G     G      // G
-#define FR_H     H      // H
-#define FR_J     J      // J
-#define FR_K     K      // K
-#define FR_L     L      // L
-#define FR_M     SEMI   // M
-#define FR_UGRV  SQT    // ù
-#define FR_ASTR  NUHS   // *
+#define BE_Q     A      // Q
+#define BE_S     S      // S
+#define BE_D     D      // D
+#define BE_F     F      // F
+#define BE_G     G      // G
+#define BE_H     H      // H
+#define BE_J     J      // J
+#define BE_K     K      // K
+#define BE_L     L      // L
+#define BE_M     SEMI   // M
+#define BE_UGRV  SQT    // ù
+#define BE_MICR  NUHS   // µ
 // Row 4
-#define FR_LT    NUBS   // <
-#define FR_W     Z      // W
-#define FR_X     X      // X
-#define FR_C     C      // C
-#define FR_V     V      // V
-#define FR_B     B      // B
-#define FR_N     N      // N
-#define FR_COMMA M      // ,
-#define FR_SEMI  COMMA  // ;
-#define FR_COLON DOT    // :
-#define FR_EXCL  SLASH  // !
+#define BE_LT    NUBS   // <
+#define BE_W     Z      // W
+#define BE_X     X      // X
+#define BE_C     C      // C
+#define BE_V     V      // V
+#define BE_B     B      // B
+#define BE_N     N      // N
+#define BE_COMMA M      // ,
+#define BE_SEMI  COMMA  // ;
+#define BE_COLON DOT    // :
+#define BE_EQUAL SLASH  // =
 
 /* Shifted symbols
 ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐
-│ ³ │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 0 │ ° │ + │       │
+│ ³ │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 0 │ ° │ _ │       │
 ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤
-│     │   │   │   │   │   │   │   │   │   │   │¨☠️│ £ │     │
+│     │   │   │   │   │   │   │   │   │   │   │¨☠️│ * │     │
 ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┐    │
-│      │   │   │   │   │   │   │   │   │   │   │ % │ µ │    │
+│      │   │   │   │   │   │   │   │   │   │   │ % │ £ │    │
 ├────┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴───┴────┤
-│    │ > │   │   │   │   │   │   │ ? │ . │ / │ § │          │
+│    │ > │   │   │   │   │   │   │ ? │ . │ / │ + │          │
 ├────┼───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤
 │    │    │    │                        │    │    │    │    │
 └────┴────┴────┴────────────────────────┴────┴────┴────┴────┘
 */
 // Row 1
-#define FR_3UP   LS(FR_2UP)   // ³
-#define FR_1     LS(FR_AMPR)  // 1
-#define FR_2     LS(FR_EACU)  // 2
-#define FR_3     LS(FR_DQT)   // 3
-#define FR_4     LS(FR_SQT)   // 4
-#define FR_5     LS(FR_LPRN)  // 5
-#define FR_6     LS(FR_MINUS) // 6
-#define FR_7     LS(FR_EGRV)  // 7
-#define FR_8     LS(FR_UNDS)  // 8
-#define FR_9     LS(FR_CCED)  // 9
-#define FR_0     LS(FR_AGRV)  // 0
-#define FR_DEG   LS(FR_RPRN)  // °
-#define FR_PLUS  LS(FR_EQUAL) // +
+#define BE_3UP   LS(BE_2UP)   // ³
+#define BE_1     LS(BE_AMPR)  // 1
+#define BE_2     LS(BE_EACU)  // 2
+#define BE_3     LS(BE_DQT)   // 3
+#define BE_4     LS(BE_SQT)   // 4
+#define BE_5     LS(BE_LPRN)  // 5
+#define BE_6     LS(BE_MINUS) // 6
+#define BE_7     LS(BE_EGRV)  // 7
+#define BE_8     LS(BE_EXCL)  // 8
+#define BE_9     LS(BE_CCED)  // 9
+#define BE_0     LS(BE_AGRV)  // 0
+#define BE_DEG   LS(BE_RPRN)  // °
+#define BE_UNDS  LS(BE_MINUS) // _
+
 // Row 2
-#define FR_DIAE  LS(FR_CARET) // ¨ (dead)
-#define FR_PND   LS(FR_DLR)   // £
+#define BE_DIAE  LS(BE_CARET) // ¨ (dead)
+#define BE_ASTR  LS(BE_DLR)   // *
+
 // Row 3
-#define FR_PRCNT LS(FR_UGRV) // %
-#define FR_MICR  LS(FR_ASTR) // µ
+#define BE_PRCNT LS(BE_UGRV)  // %
+#define BE_PND   LS(BE_MICR)  // £
 // Row 4
-#define FR_GT    LS(FR_LT)    // >
-#define FR_QMARK LS(FR_COMMA) // ?
-#define FR_DOT   LS(FR_SEMI)  // .
-#define FR_SLSH  LS(FR_COLON) // /
-#define FR_SECT  LS(FR_EXCL)  // §
+#define BE_GT    LS(BE_LT)    // >
+#define BE_QMARK LS(BE_COMMA) // ?
+#define BE_DOT   LS(BE_SEMI)  // .
+#define BE_SLSH  LS(BE_COLON) // /
+#define BE_PLUS  LS(BE_EQUAL) // +
 
 /* AltGr symbols
 ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐
-│ ¹ │   │ ~ │ # │ { │ [ │ | │ ` │ \ │ ^ │ @ │ ] │ } │       │
+│   │ | │ @ │ # │ { │ [ │ ^ │   │   │ { │ } │   │   │       │
 ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤
-│     │   │   │ € │   │   │   │   │   │ œ │   │~☠️│   │     │
+│     │   │   │ € │   │   │   │   │   │   │   │ [ │ ] │     │
 ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┐    │
-│      │   │   │   │   │ ’ │   │   │   │   │   │'☠️│`☠️│    │
+│      │   │   │   │   │   │   │   │   │   │   │´☠️ │`☠️ │    │
 ├────┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴───┴────┤
-│    │ ≤ │ « │ » │ © │   │ ↓ │   │ ¿ │   │   │ ¡ │          │
+│    │ \ │   │   │   │   │   │   │   │   │   │ ~ │          │
 ├────┼───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤
 │    │    │    │                        │    │    │    │    │
 └────┴────┴────┴────────────────────────┴────┴────┴────┴────┘
 */
 // Row 1
-#define FR_1UP   RA(FR_2UP)   // ¹
-#define FR_TILD  RA(FR_EACU)  // ~  /!\ win dead
-#define FR_HASH  RA(FR_DQT)   // #
-#define FR_LCBR  RA(FR_SQT)   // {
-#define FR_LBRC  RA(FR_LPRN)  // [
-#define FR_PIPE  RA(FR_MINUS) // |
-#define FR_GRAVE RA(FR_EGRV)  // `  /!\ win dead
-#define FR_BSLS  RA(FR_UNDS)  // backslash
-#define FR_AT    RA(FR_AGRV)  // @
-#define FR_RBRC  RA(FR_RPRN)  // ]
-#define FR_RCBR  RA(FR_EQUAL) // }
+// #define BE_1UP   RA(BE_2UP)    // ¹
+#define BE_PIPE  RA(BE_AMPR)      // |
+#define BE_AT    RA(BE_EACU)      // @
+#define BE_HASH  RA(BE_DQT)       // #
+#define BE_LCBR  RA(BE_SQT)       // {
+// #define BE_LBRC  RA(BE_LPRN)   // [
+// #define BE_TILD  RA(BE_EQUAL)  // ~
+// #define BE_GRAVE RA(BE_EGRV)   // `  /!\ win dead
+
+// #define BE_RBRC  RA(BE_RPRN)   // ]
+#define BE_RCBR  RA(BE_AGRV)      // }
 // Row 2
-#define FR_EURO  RA(FR_E)     // €
-#define FR_OE    RA(FR_O)     // œ
-#define FR_TILDD RA(FR_CARET) // ~ (dead)
+#define BE_EURO  RA(BE_E)         // €
+#define BE_LBRC  RA(BE_CARET)     // [
+#define BE_RBRC  RA(BE_DLR)       // ]
 // Row 3
-#define FR_APOS  RA(FR_G)     // ’
-#define FR_ACUTE RA(FR_UGRV)  // ' (dead)
-#define FR_GRAVD RA(FR_ASTR)  // ` (dead)
+#define BE_GRAVG RA(BE_UGRV)      // ´ (dead)
+#define BE_GRAVD RA(BE_MICR)      // ` (dead)
 // Row 4
-#define FR_LTE   RA(FR_LT)    // ≤
-#define FR_QML   RA(FR_W)     // «
-#define FR_QMR   RA(FR_X)     // »
-#define FR_COP   RA(FR_C)     // © (mac too)
-#define FR_DARR  RA(FR_B)     // ↓
-#define FR_IQM   RA(FR_COMMA) // ¿
-#define FR_IEM   RA(FR_EXCL)  // ¡
-
-/* AltGr+Shifted symbols
-┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐
-│   │   │ É │   │ — │   │   │ È │ ™ │ Ç │ À │ ≠ │ ± │       │
-├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤
-│     │   │   │   │   │   │   │   │   │ Œ │   │   │   │     │
-├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┐    │
-│      │   │   │   │   │   │   │   │   │   │   │   │   │    │
-├────┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴───┴────┤
-│    │ ≥ │   │   │ ® │ ← │ ↑ │ → │ … │   │   │   │          │
-├────┼───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤
-│    │    │    │                        │    │    │    │    │
-└────┴────┴────┴────────────────────────┴────┴────┴────┴────┘
-*/
-// Row 1
-#define FR_EACU_UP LS(RA(FR_EACU))  // É
-#define FR_EMDASH  LS(RA(FR_SQT))   // —
-#define FR_EGRV_UP LS(RA(FR_EGRV))  // È
-#define FR_TM      LS(RA(FR_UNDS))  // ™
-#define FR_CCED_UP LS(RA(FR_CCED))  // Ç
-#define FR_AGRV_UP LS(RA(FR_AGRV))  // À
-#define FR_DIFF    LS(RA(FR_RPRN))  // ≠
-#define FR_PLUMI   LS(RA(FR_EQUAL)) // ±
-// Row 2
-#define FR_OE_UP   LS(RA(FR_O))     // Œ
-// Row 4
-#define FR_GTE     LS(RA(FR_GT))    // ≥
-#define FR_RGHTS   LS(RA(FR_C))     // ®
-#define FR_LARR    LS(RA(FR_V))     // ←
-#define FR_UARR    LS(RA(FR_B))     // ↑
-#define FR_RARR    LS(RA(FR_N))     // →
-#define FR_DDD     LS(RA(FR_COMMA)) // …
-
-
-
-#define GRAVD RA(N7)  // ` (dead)
-#define TILDD RA(N2)  // ~ (dead)
-
+#define BE_BSLS  RA(BE_LT)        // "\"
+#define BE_TILD  RA(BE_EQUAL)     // ~ (dead)
 
 /* Actions */
-#define WIN_CUT   LC(FR_X)
-#define WIN_COPY  LC(FR_C)
-#define WIN_PASTE LC(FR_V)
-#define WIN_REDO  LC(FR_Y)
-
+#define WIN_CUT     LC(BE_X)
+#define WIN_COPY    LC(BE_C)
+#define WIN_PASTE   LC(BE_V)
+#define WIN_UNDO    LC(BE_Z)
+#define WIN_REDO    LC(BE_Y)
+#define WIN_SAVE    LC(BE_S)
+#define WIN_RELOAD  LC(LS(BE_R))
 
 /* Alternate Alphas & Symbols */
 #define MACRO_ALT_CODE(name, d1, d2, d3) \
-MACRO(name, \
+ZMK_MACRO(name, \
   bindings \
-    = <&macro_press &kp LALT> \
+    = <&macro_release &kp RSHFT> \
+    , <&macro_press &kp LALT> \
     , <&macro_tap &kp KP_N0 &kp KP_N##d1 &kp KP_N##d2 &kp KP_N##d3> \
     , <&macro_release &kp LALT> \
     ; \
 )
-MACRO_ALT_CODE(agrv_up, 1, 9, 2) // À
-MACRO_ALT_CODE(cced_up, 1, 9, 9) // Ç
-MACRO_ALT_CODE(eacu_up, 2, 0, 1) // É
-MACRO_ALT_CODE(egrv_up, 2, 0, 0) // È
-MACRO_ALT_CODE(oe_lo,   1, 5, 6) // œ
-MACRO_ALT_CODE(oe_up,   1, 4, 0) // Œ
-MACRO_ALT_CODE(grave,   0, 9, 6) // `
-MACRO_ALT_CODE(tild,    1, 2, 6) // ~
-MACRO_ALT_CODE(qml,     1, 7, 1) // «
-MACRO_ALT_CODE(qmr,     1, 8, 7) // »
-MACRO_ALT_CODE(apos,    1, 4, 6) // ’
-MACRO_ALT_CODE(emdash,  1, 5, 1) // —
-MACRO_ALT_CODE(ddd,     1, 3, 3) // …
-MACRO_ALT_CODE(iqm,     1, 9, 1) // ¿
-MACRO_ALT_CODE(iem,     1, 6, 1) // ¡
+MACRO_ALT_CODE(win_agrv_up, 1, 9, 2) // À
+MACRO_ALT_CODE(win_cced_up, 1, 9, 9) // Ç
+MACRO_ALT_CODE(win_eacu_up, 2, 0, 1) // É
+MACRO_ALT_CODE(win_egrv_up, 2, 0, 0) // È
+MACRO_ALT_CODE(win_ugrv_up, 2, 1, 7) // Ù
 MACRO_ALT_CODE(win_1up,     1, 8, 5) // ¹
 MACRO_ALT_CODE(win_3up,     1, 7, 9) // ³
