@@ -25,14 +25,14 @@
 #define HRMR(k1,k2,k3,k4) &ht RSHFT k1 &ht RCTRL k2 &ht RALT k3 &ht RGUI k4
 
 
-#undef COMBO_TERM
-#define COMBO_TERM 40  // timeout of 40ms (default is 30ms if omitted)
-COMBO(combo_agrav,  &agrv, LB3 LB4, 0)  
-COMBO(combo_q,   &kp FR_Q, LB7 LB8, 0)  
-COMBO(combo_underscore,  &kp UNDERSCORE, LB25 LB26, 0)  
-COMBO(combo_minus,  &kp MINUS,  LB27 LB28, 0)  
-COMBO(combo_caret,  &kp CARET,  LB31 LB32, 0)  
-COMBO(combo_cced,  &cced,  LB32 LB33, 0)  
+// #undef COMBO_TERM
+// #define COMBO_TERM 40  // timeout of 40ms (default is 30ms if omitted)
+// COMBO(combo_agrav,  &agrv, LB3 LB4, 0)  
+// COMBO(combo_q,   &kp FR_Q, LB7 LB8, 0)  
+// COMBO(combo_underscore,  &kp UNDERSCORE, LB25 LB26, 0)  
+// COMBO(combo_minus,  &kp MINUS,  LB27 LB28, 0)  
+// COMBO(combo_caret,  &kp CARET,  LB31 LB32, 0)  
+// COMBO(combo_cced,  &cced,  LB32 LB33, 0)  
 
 /*
           ╭─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
