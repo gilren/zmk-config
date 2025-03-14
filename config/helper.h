@@ -169,9 +169,9 @@
     };
 
 
-#define MACRO(...) \
-/ { \
-  macros { \
-    ZMK_MACRO(__VA_ARGS__) \
-  }; \
-};
+// #define MACRO(...) \
+//     / { \
+//     macros { \
+//         ZMK_MACRO(__VA_ARGS__) \
+//     }; \
+// };
