@@ -1,4 +1,4 @@
-#include <behaviors.dtsi>
+#include <behaviors/num_word.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
@@ -76,7 +76,6 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)  // right-hand HRMs
 };
 
 &num_word {  // num-word, requires PR #1451
-    layers = <NUM>;
     continue-list = <BSPC DEL BE_DOT BE_COMMA BE_PLUS BE_MINUS BE_ASTR BE_SLSH BE_EQUAL>;
     ignore-modifiers;
     ignore-numbers;
