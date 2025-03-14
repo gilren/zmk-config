@@ -26,7 +26,7 @@
 #define BE_CCED  N9     // ç
 #define BE_AGRV  N0     // à
 #define BE_RPRN  MINUS  // )
-#define BE_MINUS EQUAL  // =
+#define BE_MINUS EQUAL  // -
 // Row 2
 #define BE_A     Q      // A
 #define BE_Z     W      // Z
