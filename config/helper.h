@@ -167,11 +167,3 @@
     / { \
         chosen { zmk,matrix_transform = &transform; }; \
     };
-
-
-// #define MACRO(...) \
-//     / { \
-//     macros { \
-//         ZMK_MACRO(__VA_ARGS__) \
-//     }; \
-// };
