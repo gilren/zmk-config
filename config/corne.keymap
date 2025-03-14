@@ -84,7 +84,7 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)  // right-hand HRMs
     ignore-numbers;
 };
 
-ZMK_NAV_WORD(nav_word, {
+ZMK_NAV_WORD({
     continue-list = <LEFT DOWN UP RIGHT PG_UP PG_DN WIN_UNDO WIN_CUT WIN_COPY WIN_PASTE>;
     ignore-modifiers;
 });
