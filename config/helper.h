@@ -28,7 +28,6 @@
 #define ZMK_BEHAVIOR_CORE_sticky_key      compatible = "zmk,behavior-sticky-key";      #binding-cells = <1>
 #define ZMK_BEHAVIOR_CORE_tap_dance       compatible = "zmk,behavior-tap-dance";       #binding-cells = <0>
 #define ZMK_BEHAVIOR_CORE_tri_state       compatible = "zmk,behavior-tri-state";       #binding-cells = <0>
-#define ZMK_BEHAVIOR_CORE_nav_word        compatible = "zmk,behavior-auto-layer";      #binding-cells = <1>
 
 #define ZMK_BEHAVIOR(name, type, ...) \
     / { \
@@ -53,7 +52,6 @@
 #define ZMK_STICKY_KEY(name, ...) ZMK_BEHAVIOR(name, sticky_key, __VA_ARGS__)
 #define ZMK_TAP_DANCE(name, ...) ZMK_BEHAVIOR(name, tap_dance, __VA_ARGS__)
 #define ZMK_TRI_STATE(name, ...) ZMK_BEHAVIOR(name, tri_state, __VA_ARGS__)
-#define ZMK_NAV_WORD(name, ...) ZMK_BEHAVIOR(name, nav_word, __VA_ARGS__)
 
 /* ZMK_LAYER */
 
