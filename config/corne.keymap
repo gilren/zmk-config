@@ -86,21 +86,21 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)  // right-hand HRMs
     ignore-numbers;
 };
 
-// / {
-//   behaviors {
-//     nav_word: nav_word {
-//       compatible = "zmk,behavior-auto-layer";
-//       #binding-cells = <1>;
-//       continue-list = <LEFT DOWN UP RIGHT PG_UP PG_DN WIN_UNDO WIN_CUT WIN_COPY WIN_PASTE>;
-//       ignore-modifiers;
-//     };
-//   };
-// };
+/ {
+  behaviors {
+    nav_word: nav_word {
+      compatible = "zmk,behavior-auto-layer";
+      #binding-cells = <1>;
+      continue-list = <LEFT DOWN UP RIGHT PG_UP PG_DN WIN_UNDO WIN_CUT WIN_COPY WIN_PASTE>;
+      ignore-modifiers;
+    };
+  };
+};
 
-ZMK_AUTO_LAYER(nav_word,
-    continue-list = <LEFT DOWN UP RIGHT PG_UP PG_DN WIN_UNDO WIN_CUT WIN_COPY WIN_PASTE>;
-    ignore-modifiers;
-);
+// ZMK_AUTO_LAYER(nav_word,
+//     continue-list = <LEFT DOWN UP RIGHT PG_UP PG_DN WIN_UNDO WIN_CUT WIN_COPY WIN_PASTE>;
+//     ignore-modifiers;
+// );
 
 
 
