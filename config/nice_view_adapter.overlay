@@ -1,16 +1,22 @@
 &i2c1 {
     status = "okay";
-    pinctrl-0 = <&i2c1_default>;  // This is the new line to define pinctrl-0
-    pinctrl-names = "default";    // Pin control names
 
-    ssd1306: ssd1306@3c {
+    ssd1306: ssd1306@3C {
         compatible = "solomon,ssd1306fb";
-        reg = <0x3c>;
+        reg = <0x3C>;
         width = <128>;
         height = <64>;
         segment-offset = <0>;
         page-offset = <0>;
         display-offset = <0>;
         multiplex-ratio = <63>;
+        segment-remap;
+        com-invdir;
+        prechargep = <0x22>;
+        reset-gpios = <&gpio0 2 GPIO_ACTIVE_LOW>;
     };
+};
+
+&zephyr_user {
+    zephyr,display = <&ssd1306>;
 };
