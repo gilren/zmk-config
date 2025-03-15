@@ -97,6 +97,12 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)  // right-hand HRMs
 //   };
 // };
 
+ZMK_AUTO_LAYER(nav_word, 
+    continue-list = <LEFT DOWN UP RIGHT PG_UP PG_DN WIN_UNDO WIN_CUT WIN_COPY WIN_PASTE>;
+    ignore-modifiers;
+);
+
+
 
 ZMK_TRI_STATE(swapper,
     bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
