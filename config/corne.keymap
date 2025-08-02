@@ -18,16 +18,6 @@
 
 #define QUICK_TAP_MS 175
 
-#define KK_CUT     LC(BE_X)
-#define KK_COPY    LC(BE_C)
-#define KK_PASTE   LC(BE_V)
-#define KK_UNDO    LC(BE_Z)
-#define KK_REDO    LC(BE_Y)
-#define KK_SAVE    LC(BE_S)
-#define KK_RELOAD  LC(LS(BE_R))
-#define KK_EUR     RA(N5)
-
-
 /* Global settings */
 
 
@@ -114,19 +104,27 @@ ZMK_TAP_DANCE(a_dance, bindings = <&kp A>, <&sl NUM>;
               tapping-term-ms = <200>;)
 
 // ALIASES
+#define KK_CUT     LC(BE_X)
+#define KK_COPY    LC(BE_C)
+#define KK_PASTE   LC(BE_V)
+#define KK_UNDO    LC(BE_Z)
+#define KK_REDO    LC(BE_Y)
+#define KK_SAVE    LC(BE_S)
+#define KK_RELOAD  LC(LS(BE_R))
+#define KK_EUR     RA(N5)
 
 // DIACRITICS
-ZMK_MACRO(fr_e_aigu, bindings = <&kp RALT &kp QUOTE &kp E>;) // é
-ZMK_MACRO(fr_e_grave, bindings = <&kp RALT &kp GRAVE &kp E>;) // è
-ZMK_MACRO(fr_a_grave, bindings = <&kp RALT &kp GRAVE &kp A>;) // à
-ZMK_MACRO(fr_u_grave, bindings = <&kp RALT &kp GRAVE &kp U>;) // ù
-ZMK_MACRO(fr_c_cedille, bindings = <&kp RALT &kp COMMA &kp C>;) // ç
-ZMK_MACRO(fr_a_cironfl, bindings = <&kp RALT &kp LS(N6) &kp A>;) // â
-ZMK_MACRO(fr_e_cironfl, bindings = <&kp RALT &kp LS(N6) &kp E>;) // ê
-ZMK_MACRO(fr_i_cironfl, bindings = <&kp RALT &kp LS(N6) &kp I>;) // î
-ZMK_MACRO(fr_o_cironfl, bindings = <&kp RALT &kp LS(N6) &kp O>;) // ô
-ZMK_MACRO(fr_u_cironfl, bindings = <&kp RALT &kp LS(N6) &kp U>;) // û
-ZMK_MACRO(fr_e_trema, bindings = <&kp RALT &kp LS(QUOTE) &kp E>;) // ë
+ZMK_MACRO_ONE_PARAM(fr_e_aigu, bindings = <&kp RALT &kp QUOTE &kp E>;) // é
+ZMK_MACRO_ONE_PARAM(fr_e_grave, bindings = <&kp RALT &kp GRAVE &kp E>;) // è
+ZMK_MACRO_ONE_PARAM(fr_a_grave, bindings = <&kp RALT &kp GRAVE &kp A>;) // à
+ZMK_MACRO_ONE_PARAM(fr_u_grave, bindings = <&kp RALT &kp GRAVE &kp U>;) // ù
+ZMK_MACRO_ONE_PARAM(fr_c_cedille, bindings = <&kp RALT &kp COMMA &kp C>;) // ç
+ZMK_MACRO_ONE_PARAM(fr_a_cironfl, bindings = <&kp RALT &kp LS(N6) &kp A>;) // â
+ZMK_MACRO_ONE_PARAM(fr_e_cironfl, bindings = <&kp RALT &kp LS(N6) &kp E>;) // ê
+ZMK_MACRO_ONE_PARAM(fr_i_cironfl, bindings = <&kp RALT &kp LS(N6) &kp I>;) // î
+ZMK_MACRO_ONE_PARAM(fr_o_cironfl, bindings = <&kp RALT &kp LS(N6) &kp O>;) // ô
+ZMK_MACRO_ONE_PARAM(fr_u_cironfl, bindings = <&kp RALT &kp LS(N6) &kp U>;) // û
+ZMK_MACRO_ONE_PARAM(fr_e_trema, bindings = <&kp RALT &kp LS(QUOTE) &kp E>;) // ë
 // ZMK_MACRO(fr_i_trema, bindings = <&kp RALT &kp LS(QUOTE) &kp I>;) // ï
 
 
