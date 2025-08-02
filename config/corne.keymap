@@ -154,16 +154,6 @@ ZMK_LAYER(DEFAULT,
                             │     │     │     │   │     │     │     │
                             ╰─────┴─────┴─────╯   ╰─────┴─────┴─────╯
 */
-
-
-ZMK_LAYER(SYMBOLS,
-  &kp RA(QUOTE)   &kp GRAVE     &kp LT      &kp GT     &kp MINUS    &kp PIPE         &kp HASH     &kp LBRC     &kp RBRC     &kp DLLR     &kp SQT   &kp KK_EUR
-  &kp QMARK       &kp EXCL      &kp STAR    &kp BSLH   &kp EQUAL    &kp AMPS         &kp COLON    &kp RPAR     &kp LPAR     &kp SEMI     &kp DQT   ___
-  &kp UNDER       &kp TILDE     &kp PLUS    &kp LBKT   &kp RBKT     &kp PRCNT        &kp AT       &kp CARET    &kp COMMA    &kp DOT      &kp SLSH  ___
-                                            ___        ___          ___              ___          ___          ___
-)
-
-
 ZMK_LAYER(DIACRITICS,
   ___   &fr_a_cironfl   &fr_e_cironfl   ___   ___   ___                  ___   ___   &fr_u_cironfl   ___   ___   ___
   ___   &fr_a_grave     &fr_e_aigu   &fr_e_grave   &fr_e_trema   ___     ___   ___   &fr_u_grave   &fr_i_cironfl   &fr_o_cironfl   ___
@@ -180,7 +170,12 @@ ZMK_LAYER(DIACRITICS,
                             │     │     │     │   │     │  X  │     │
                             ╰─────┴─────┴─────╯   ╰─────┴─────┴─────╯
 */
-
+ZMK_LAYER(SYMBOLS,
+  &kp RA(APOS)    &kp GRAVE     &kp LT      &kp GT     &kp MINUS    &kp PIPE         &kp HASH     &kp LBRC     &kp RBRC     &kp DLLR     &kp SQT   &kp KK_EUR
+  &kp QMARK       &kp EXCL      &kp STAR    &kp BSLH   &kp EQUAL    &kp AMPS         &kp COLON    &kp RPAR     &kp LPAR     &kp SEMI     &kp DQT   ___
+  &kp UNDER       &kp TILDE     &kp PLUS    &kp LBKT   &kp RBKT     &kp PRCNT        &kp AT       &kp CARET    &kp COMMA    &kp DOT      &kp SLSH  ___
+                                            ___        ___          ___              ___          ___          ___
+)
 
 /*
           ┌─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
