@@ -76,28 +76,29 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)  // right-hand HRMs
 
 /* Smart layers */
 
-&caps_word {  // mods deactivate caps-word, requires PR #1451
-    continue-list = <UNDERSCORE MINUS LCTRL LALT LGUI LSHFT RCTRL RALT RGUI RSHFT BACKSPACE HASH AT AGRV EACU EGRV UGRV CARET COMMA DOT SQT>;
-    /delete-property/ ignore-numbers;
-    /delete-property/ ignore-modifiers;
-};
+// &caps_word {  // mods deactivate caps-word, requires PR #1451
+//     continue-list = <UNDERSCORE MINUS LCTRL LALT LGUI LSHFT RCTRL RALT RGUI RSHFT BACKSPACE HASH AT AGRV EACU EGRV UGRV CARET COMMA DOT SQT>;
+//     /delete-property/ ignore-numbers;
+//     /delete-property/ ignore-modifiers;
+// };
 
-&num_word {  // num-word, requires PR #1451
-    continue-list = <BSPC DEL DOT COMMA PLUS MINUS ASTR SLSH EQUAL>;
-    ignore-modifiers;
-    ignore-numbers;
-};
 
-/ {
-  behaviors {
-    nav_word: nav_word {
-      compatible = "zmk,behavior-auto-layer";
-      #binding-cells = <1>;
-      continue-list = <LEFT DOWN UP RIGHT PG_UP PG_DN KK_UNDO KK_CUT KK_COPY KK_PASTE>;
-      ignore-modifiers;
-    };
-  };
-};
+// &num_word {  // num-word, requires PR #1451
+//     continue-list = <BSPC DEL DOT COMMA PLUS MINUS ASTR SLSH EQUAL>;
+//     ignore-modifiers;
+//     ignore-numbers;
+// };
+
+// / {
+//   behaviors {
+//     nav_word: nav_word {
+//       compatible = "zmk,behavior-auto-layer";
+//       #binding-cells = <1>;
+//       continue-list = <LEFT DOWN UP RIGHT PG_UP PG_DN KK_UNDO KK_CUT KK_COPY KK_PASTE>;
+//       ignore-modifiers;
+//     };
+//   };
+// };
 
 // ZMK_AUTO_LAYER(nav_word,
 //     continue-list = <LEFT DOWN UP RIGHT PG_UP PG_DN KK_UNDO KK_CUT KK_COPY KK_PASTE>;
@@ -142,7 +143,7 @@ ZMK_MACRO(fr_e_trema, bindings = <&kp RALT &kp LS(QUOTE) &kp E>;) // ë
 ZMK_LAYER(DEFAULT,
   ___   &kp Q         &kp W         &kp F          &kp P          &kp B        &kp J         &kp L          &kp U          &kp Y         &kp SQT          &kp PSCRN
   ___   &hml LGUI A   &hml LALT R   &hml LCTRL S   &hml LSHFT T   &kp G        &kp M         &hmr RSHFT N   &hmr RCTRL E   &hmr LALT I   &hmr RGUI O      &kp SQT
-  ___   &kp Z         &hml RALT X   &kp C          &kp D          &kp V        &kp K         &kp H          &lt DIA COMMA      &hmr RALT DOT &kp FSLH         ___
+  ___   &kp Z         &hml RALT X   &kp C          &kp D          &kp V        &lt DIA K     &kp H          &kp COMMA      &hmr RALT DOT &kp FSLH         ___
                       &lt FUN ESC   &lt NAV SPACE  &kp TAB        &lt SYM ENTER    &lt NUM BSPC  &kp DEL
 )
 
@@ -150,7 +151,7 @@ ZMK_LAYER(DEFAULT,
           ╭─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
           │     │  â  │     │  ê  │     │     │   │     │     │  û  │     │     │     │
           │     │  à  │  é  │  è  │  ë  │     │   │     │     │  ù  │  î  │  ô  │     │
-          │     │     │     │  ç  │     │     │   │     │     │  X  │     │     │     │
+          │     │     │     │  ç  │     │     │   │     │  X  │     │     │     │     │
           ╰─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────╯
                             │     │     │     │   │     │     │     │
                             ╰─────┴─────┴─────╯   ╰─────┴─────┴─────╯
