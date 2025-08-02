@@ -104,13 +104,13 @@ ZMK_TAP_DANCE(a_dance, bindings = <&kp A>, <&sl NUM>;
               tapping-term-ms = <200>;)
 
 // ALIASES
-#define KK_CUT     LC(BE_X)
-#define KK_COPY    LC(BE_C)
-#define KK_PASTE   LC(BE_V)
-#define KK_UNDO    LC(BE_Z)
-#define KK_REDO    LC(BE_Y)
-#define KK_SAVE    LC(BE_S)
-#define KK_RELOAD  LC(LS(BE_R))
+#define KK_CUT     LC(X)
+#define KK_COPY    LC(C)
+#define KK_PASTE   LC(V)
+#define KK_UNDO    LC(Z)
+#define KK_REDO    LC(Y)
+#define KK_SAVE    LC(S)
+#define KK_RELOAD  LC(LS(R))
 #define KK_EUR     RA(N5)
 
 // DIACRITICS
