@@ -18,14 +18,14 @@
 
 #define QUICK_TAP_MS 175
 
-#define K_CUT     LC(BE_X)
-#define K_COPY    LC(BE_C)
-#define K_PASTE   LC(BE_V)
-#define K_UNDO    LC(BE_Z)
-#define K_REDO    LC(BE_Y)
-#define K_SAVE    LC(BE_S)
-#define K_RELOAD  LC(LS(BE_R))
-#define K_EUR     RA(N5)
+#define KK_CUT     LC(BE_X)
+#define KK_COPY    LC(BE_C)
+#define KK_PASTE   LC(BE_V)
+#define KK_UNDO    LC(BE_Z)
+#define KK_REDO    LC(BE_Y)
+#define KK_SAVE    LC(BE_S)
+#define KK_RELOAD  LC(LS(BE_R))
+#define KK_EUR     RA(N5)
 
 
 /* Global settings */
@@ -94,14 +94,14 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)  // right-hand HRMs
     nav_word: nav_word {
       compatible = "zmk,behavior-auto-layer";
       #binding-cells = <1>;
-      continue-list = <LEFT DOWN UP RIGHT PG_UP PG_DN K_UNDO K_CUT K_COPY K_PASTE>;
+      continue-list = <LEFT DOWN UP RIGHT PG_UP PG_DN KK_UNDO KK_CUT KK_COPY KK_PASTE>;
       ignore-modifiers;
     };
   };
 };
 
 // ZMK_AUTO_LAYER(nav_word,
-//     continue-list = <LEFT DOWN UP RIGHT PG_UP PG_DN K_UNDO K_CUT K_COPY K_PASTE>;
+//     continue-list = <LEFT DOWN UP RIGHT PG_UP PG_DN KK_UNDO KK_CUT KK_COPY KK_PASTE>;
 //     ignore-modifiers;
 // );
 
@@ -174,8 +174,8 @@ ZMK_LAYER(DIACRITICS,
 */
 
 ZMK_LAYER(NAVIG,
-  ___  ___           ___          &swapper      ___         ___      &kp K_REDO     &kp K_PASTE    &kp K_COPY     &kp K_CUT     &kp K_UNDO    &kp K_SAVE
-  ___  &kp LGUI     &kp LALT      &kp LCTRL     &kp LSHFT   ___      &kp CAPS       &kp LEFT       &kp DOWN       &kp UP        &kp RIGHT     &kp K_RELOAD
+  ___  ___           ___          &swapper      ___         ___      &kp KK_REDO     &kp KK_PASTE    &kp KK_COPY     &kp KK_CUT     &kp KK_UNDO    &kp KK_SAVE
+  ___  &kp LGUI     &kp LALT      &kp LCTRL     &kp LSHFT   ___      &kp CAPS       &kp LEFT       &kp DOWN       &kp UP        &kp RIGHT     &kp KK_RELOAD
   ___  ___          &kp RALT      ___           ___         ___      &kp INS        &kp HOME       &kp PG_DN      &kp PG_UP     &kp END       &kp PSCRN
                                   ___           ___         ___      ___            ___            ___
 )
@@ -191,7 +191,7 @@ ZMK_LAYER(NAVIG,
 */
 
 ZMK_LAYER(SYMBOLS,
-  &kp RA(QUOTE)   &kp GRAVE     &kp LT      &kp GT     &kp MINUS    &kp PIPE         &kp HASH     &kp LBRC     &kp RBRC     &kp DLLR     &kp SQT   &kp K_EUR
+  &kp RA(QUOTE)   &kp GRAVE     &kp LT      &kp GT     &kp MINUS    &kp PIPE         &kp HASH     &kp LBRC     &kp RBRC     &kp DLLR     &kp SQT   &kp KK_EUR
   &kp QMARK       &kp EXCL      &kp STAR    &kp BSLH   &kp EQUAL    &kp AMPS         &kp COLON    &kp RPAR     &kp LPAR     &kp SEMI     &kp DQT   ___
   &kp UNDER       &kp TILDE     &kp PLUS    &kp LBKT   &kp RBKT     &kp PRCNT        &kp AT       &kp CARET    &kp COMMA    &kp DOT      &kp SLSH  ___
                                             ___        ___          ___              ___          ___          ___
