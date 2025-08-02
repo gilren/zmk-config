@@ -77,8 +77,7 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)  // right-hand HRMs
 /* Smart layers */
 
 &caps_word {  // mods deactivate caps-word, requires PR #1451
-    continue-list = <UNDERSCORE MINUS LCTRL LALT LGUI LSHFT RCTRL RALT RGUI RSHFT BACKSPACE
-    HASH AT AGRV EACU EGRV UGRV CARET COMMA DOT SQT>;
+    continue-list = <UNDERSCORE MINUS LCTRL LALT LGUI LSHFT RCTRL RALT RGUI RSHFT BACKSPACE HASH AT AGRV EACU EGRV UGRV CARET COMMA DOT SQT>;
     /delete-property/ ignore-numbers;
     /delete-property/ ignore-modifiers;
 };
