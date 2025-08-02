@@ -114,17 +114,17 @@ ZMK_TAP_DANCE(a_dance, bindings = <&kp A>, <&sl NUM>;
 #define KK_EUR     RA(N5)
 
 // DIACRITICS
-ZMK_MACRO_ONE_PARAM(fr_e_aigu, bindings = <&kp RALT &kp QUOTE &kp E>;) // é
-ZMK_MACRO_ONE_PARAM(fr_e_grave, bindings = <&kp RALT &kp GRAVE &kp E>;) // è
-ZMK_MACRO_ONE_PARAM(fr_a_grave, bindings = <&kp RALT &kp GRAVE &kp A>;) // à
-ZMK_MACRO_ONE_PARAM(fr_u_grave, bindings = <&kp RALT &kp GRAVE &kp U>;) // ù
-ZMK_MACRO_ONE_PARAM(fr_c_cedille, bindings = <&kp RALT &kp COMMA &kp C>;) // ç
-ZMK_MACRO_ONE_PARAM(fr_a_cironfl, bindings = <&kp RALT &kp LS(N6) &kp A>;) // â
-ZMK_MACRO_ONE_PARAM(fr_e_cironfl, bindings = <&kp RALT &kp LS(N6) &kp E>;) // ê
-ZMK_MACRO_ONE_PARAM(fr_i_cironfl, bindings = <&kp RALT &kp LS(N6) &kp I>;) // î
-ZMK_MACRO_ONE_PARAM(fr_o_cironfl, bindings = <&kp RALT &kp LS(N6) &kp O>;) // ô
-ZMK_MACRO_ONE_PARAM(fr_u_cironfl, bindings = <&kp RALT &kp LS(N6) &kp U>;) // û
-ZMK_MACRO_ONE_PARAM(fr_e_trema, bindings = <&kp RALT &kp LS(QUOTE) &kp E>;) // ë
+ZMK_MACRO(fr_e_aigu, bindings = <&kp RALT &kp QUOTE &kp E>) // é
+ZMK_MACRO(fr_e_grave, bindings = <&kp RALT &kp GRAVE &kp E>) // è
+ZMK_MACRO(fr_a_grave, bindings = <&kp RALT &kp GRAVE &kp A>) // à
+ZMK_MACRO(fr_u_grave, bindings = <&kp RALT &kp GRAVE &kp U>) // ù
+ZMK_MACRO(fr_c_cedille, bindings = <&kp RALT &kp COMMA &kp C>) // ç
+ZMK_MACRO(fr_a_cironfl, bindings = <&kp RALT &kp LS(N6) &kp A>) // â
+ZMK_MACRO(fr_e_cironfl, bindings = <&kp RALT &kp LS(N6) &kp E>) // ê
+ZMK_MACRO(fr_i_cironfl, bindings = <&kp RALT &kp LS(N6) &kp I>) // î
+ZMK_MACRO(fr_o_cironfl, bindings = <&kp RALT &kp LS(N6) &kp O>) // ô
+ZMK_MACRO(fr_u_cironfl, bindings = <&kp RALT &kp LS(N6) &kp U>) // û
+ZMK_MACRO(fr_e_trema, bindings = <&kp RALT &kp LS(QUOTE) &kp E>) // ë
 // ZMK_MACRO(fr_i_trema, bindings = <&kp RALT &kp LS(QUOTE) &kp I>;) // ï
 
 
