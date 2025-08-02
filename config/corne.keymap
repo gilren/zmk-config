@@ -155,27 +155,10 @@ ZMK_LAYER(DEFAULT,
                             ╰─────┴─────┴─────╯   ╰─────┴─────┴─────╯
 */
 ZMK_LAYER(DIACRITICS,
-  ___   &fr_a_cironfl   &fr_e_cironfl   ___   ___   ___          ___   ___   &fr_u_cironfl   ___   ___   ___
-  ___   &fr_a_grave     &fr_e_aigu   &fr_e_grave   &fr_e_trema   ___   ___   &fr_u_grave   &fr_i_cironfl   &fr_o_cironfl   ___
-  ___   ___             &fr_c_cedille   ___   ___  ___           ___   ___   ___   ___   ___   ___
-                                       ___   ___   ___           ___   ___   ___
-)
-
-/*
-          ┌─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
-          │     │     │     │ SWAP│     |     │   │REDO │PASTE│COPY │ CUT │UNDO │SAVE │
-          │     │ GUI │ ALT │CTRL │SHIFT│     │   │CAPS │  ←  │  ↓  │  ↑  │  →  │RELOAD│
-          │     │     │     │     │     │     │   │ INS │HOME │ PDN │ PUP │ END │PSCRN│
-          ╰─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────╯
-                            │     │  X  │     │   │     │     │     │
-                            ╰─────┴─────┴─────╯   ╰─────┴─────┴─────╯
-*/
-
-ZMK_LAYER(NAVIG,
-  ___  ___           ___          &swapper      ___         ___      &kp KK_REDO     &kp KK_PASTE    &kp KK_COPY     &kp KK_CUT     &kp KK_UNDO    &kp KK_SAVE
-  ___  &kp LGUI     &kp LALT      &kp LCTRL     &kp LSHFT   ___      &kp CAPS       &kp LEFT       &kp DOWN       &kp UP        &kp RIGHT     &kp KK_RELOAD
-  ___  ___          &kp RALT      ___           ___         ___      &kp INS        &kp HOME       &kp PG_DN      &kp PG_UP     &kp END       &kp PSCRN
-                                  ___           ___         ___      ___            ___            ___
+  ___   &fr_a_cironfl   &fr_e_cironfl   ___   ___   ___                ___   ___   &fr_u_cironfl   ___   ___   ___
+  ___   &fr_a_grave     &fr_e_aigu   &fr_e_grave   &fr_e_trema ___     ___   ___   &fr_u_grave   &fr_i_cironfl   &fr_o_cironfl   ___
+  ___   ___             &fr_c_cedille   ___   ___  ___                 ___   ___   ___   ___   ___   ___
+                                                   ___   ___   ___     ___   ___   ___
 )
 
 /*
@@ -194,6 +177,24 @@ ZMK_LAYER(SYMBOLS,
   &kp UNDER       &kp TILDE     &kp PLUS    &kp LBKT   &kp RBKT     &kp PRCNT        &kp AT       &kp CARET    &kp COMMA    &kp DOT      &kp SLSH  ___
                                             ___        ___          ___              ___          ___          ___
 )
+
+/*
+          ┌─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
+          │     │     │     │ SWAP│     |     │   │REDO │PASTE│COPY │ CUT │UNDO │SAVE │
+          │     │ GUI │ ALT │CTRL │SHIFT│     │   │CAPS │  ←  │  ↓  │  ↑  │  →  │RELOAD│
+          │     │     │     │     │     │     │   │ INS │HOME │ PDN │ PUP │ END │PSCRN│
+          ╰─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────╯
+                            │     │  X  │     │   │     │     │     │
+                            ╰─────┴─────┴─────╯   ╰─────┴─────┴─────╯
+*/
+
+ZMK_LAYER(NAVIG,
+  ___  ___           ___          &swapper      ___         ___      &kp KK_REDO    &kp KK_PASTE   &kp KK_COPY    &kp KK_CUT    &kp KK_UNDO   &kp KK_SAVE
+  ___  &kp LGUI     &kp LALT      &kp LCTRL     &kp LSHFT   ___      &kp CAPS       &kp LEFT       &kp DOWN       &kp UP        &kp RIGHT     &kp KK_RELOAD
+  ___  ___          &kp RALT      ___           ___         ___      &kp INS        &kp HOME       &kp PG_DN      &kp PG_UP     &kp END       &kp PSCRN
+                                  ___           ___         ___      ___            ___            ___
+)
+
 
 /*
           ┌─────┬─────┬─────┬─────┬─────┬─────╮   ╭─────┬─────┬─────┬─────┬─────┬─────╮
