@@ -3,6 +3,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include "keypos_42keys.h"
 
+#define HOST_OS 1
 #include "zmk-helpers/helper.h"
 #include "zmk-helpers/unicode-chars/french.dtsi"
 
